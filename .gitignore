@@ -23,7 +23,7 @@ __pycache__/
 *.temp
 
 # Large binary files
-*.exe
+# *.exe - Uncomment to ignore all exe files
 *.dll
 *.so
 *.dylib
