@@ -6,6 +6,7 @@ dist/
 # IDE files
 .vscode/
 .idea/
+venv/
 *.swp
 *.swo
 

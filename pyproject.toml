@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dbc-excel-verifier"
+version = "1.0.0"
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
+description = "DBC Excel Verifier - Convert Excel communication matrices to DBC files"
+readme = "README.md"
+license = { file = "LICENSE" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Embedded Systems",
+    "Topic :: Automotive"
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pandas>=1.5.0,<2.0.0",
+    "openpyxl>=3.1.0,<4.0.0"
+]
+
+[project.optional-dependencies]
+gui = []  # tkinter is part of Python standard library, no need to list here
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+"""Include any non-Python files if needed"""
+
+[tool.setuptools.exclude-package-data]
+"""Exclude test files and documentation from distribution"""
+""" = ["tests/*", "docs/*", ".gitignore"]
+
+[tool.pyinstaller]
+"""PyInstaller configuration for optimized packaging"""
+name = "dbc_excel_verifier"
+onefile = true
+windowed = false  # Set to true if you want GUI-only mode
+optimize = 2  # Maximum optimization level
+strip = true  # Strip debug symbols
+upx = true  # Compress with UPX if available
+console = true  # Show console output for debugging
+icon = ""  # Add icon path if needed
+
+# Exclude unnecessary modules
+excludes = [
+    "matplotlib",
+    "numpy",
+    "scipy",
+    "pytest",
+    "unittest",
+    "tkinter"  # Exclude tkinter for CLI-only builds
+]
+
+# Include only necessary modules
+includes = [
+    "pandas",
+    "openpyxl",
+    "core",
+    "cli",
+    "ui"
+]
+
+# Additional PyInstaller flags
+extra_args = [
+    "--clean",  # Clean PyInstaller cache
+    "--noconfirm"  # Overwrite output without confirmation
+]
